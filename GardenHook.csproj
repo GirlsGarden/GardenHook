@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>GardenHook</AssemblyName>
+    <Description>GardenHook</Description>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <RootNamespace>GardenHook</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <GameDlls Include="
+              $(GamePath)\BepInEx\interop\Assembly-CSharp.dll;
+              $(GamePath)\BepInEx\interop\Il2Cpp*.dll;
+              $(GamePath)\BepInEx\interop\UniTask*.dll;
+              $(GamePath)\BepInEx\interop\Unity*.dll;
+              $(GamePath)\BepInEx\interop\Utilities.dll;
+              $(GamePath)\BepInEx\interop\spine*.dll;
+              $(GamePath)\BepInEx\interop\com.*.dll;
+              $(GamePath)\BepInEx\interop\Api.dll;
+              $(GamePath)\BepInEx\interop\Battle.dll;
+              $(GamePath)\BepInEx\interop\GameUi.dll;
+              $(GamePath)\BepInEx\interop\UnityEngine*.dll;">
+    </GameDlls>
+    <Reference Include="@(GameDlls)">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <GamePath>C:\Users\husky\muv_luv_girlsgardenx_cl</GamePath>
+  </PropertyGroup>
+</Project>
