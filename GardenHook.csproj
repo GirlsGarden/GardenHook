@@ -30,8 +30,7 @@
               $(GamePath)\BepInEx\interop\com.*.dll;
               $(GamePath)\BepInEx\interop\Api.dll;
               $(GamePath)\BepInEx\interop\Battle.dll;
-              $(GamePath)\BepInEx\interop\GameUi.dll;
-              $(GamePath)\BepInEx\interop\UnityEngine*.dll;">
+              $(GamePath)\BepInEx\interop\GameUi.dll;">
     </GameDlls>
     <Reference Include="@(GameDlls)">
       <Private>false</Private>
