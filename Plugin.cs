@@ -16,6 +16,7 @@ namespace GardenHook
 
             Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
 
+            GardenConfig.Read();
             Patch.Initialize();
             AddComponent<PluginBehavior>();
         }
