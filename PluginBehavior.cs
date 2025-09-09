@@ -69,6 +69,11 @@ public class PluginBehavior : MonoBehaviour
             Notification.Popup("Game Speed", text);
         }
 
+        if (Keyboard.current.f12Key.wasPressedThisFrame)
+        {
+            StartCoroutine(ScreenshotFrame().WrapToIl2Cpp());
+        }
+
         if (Keyboard.current.f1Key.wasPressedThisFrame)
         {
             GardenConfig.Read();
@@ -82,5 +87,23 @@ public class PluginBehavior : MonoBehaviour
             Time.timeScale = CurrentGameSpeed;
             Plugin.Global.Log.LogInfo("Game speed changed. Reset to: " + CurrentGameSpeed + "x");
         }
+    }
+
+    [HideFromIl2Cpp]
+    IEnumerator ScreenshotFrame()
+    {
+        yield return new WaitForEndOfFrame();
+
+        var username = Environment.UserName;
+        var timeFormat = DateTime.Now.ToString("yyyyMMdd_HHmmssff");
+        var location = string.Format("C:\\Users\\{0}\\Pictures\\garden_{1}.png", username, timeFormat);
+
+        var texture = ScreenCapture.CaptureScreenshotAsTexture();
+        byte[] dataImage = texture.EncodeToPNG();
+        File.WriteAllBytes(location, dataImage);
+
+        Object.Destroy(texture);
+
+        Notification.SsPopup(location);
     }
 }
