@@ -43,7 +43,7 @@ You can edit config.json(`./BepInEx/plugins/config.json`) if you don't like defa
 
 | Key | Type       | Description                                                                   |
 |-----|------------|-------------------------------------------------------------------------------|
-| F1  | Reload     | Reload TSKHook config, useful when you need to resize game window size        |
+| F1  | Reload     | Reload GardenHook config                                                      |
 | F5  | Freeze     | Freeze game, mean set game speed to 0x                                        |
 | F6  | Reset      | Reset game speed to 1x/normal                                                 | 
 | F7  | Decrease   | Decrease game speed (2-0.5 etc), depends on your `speed` config               | 
