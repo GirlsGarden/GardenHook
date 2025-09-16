@@ -19,6 +19,7 @@ KM\$, fuck you.gif
 1. Make skip button always available
 2. Remove the dynamic mosaic
 3. In-game Screenshot
+4. Auto skip battle
 
 ## Requirement
 
@@ -35,15 +36,17 @@ location `C:\Users\<username>\muv_luv_girlsgardenx_cl`
 
 You can edit config.json(`./BepInEx/plugins/config.json`) if you don't like default settings.
 
-| Name  | Default Value | Description                                        |
-|-------|---------------|----------------------------------------------------|
-| speed | 0.5           | Increase/Decrease game speed each step (per click) | 
+| Name      | Default Value | Description                                        |
+|-----------|---------------|----------------------------------------------------|
+| speed     | 0.5           | Increase/Decrease game speed each step (per click) | 
+| auto_skip | false         | Auto skip battle                                   |
 
 ## Key binding
 
 | Key | Type       | Description                                                                   |
 |-----|------------|-------------------------------------------------------------------------------|
 | F1  | Reload     | Reload GardenHook config                                                      |
+| F4  | Skip       | Auto skip battle                                                              |
 | F5  | Freeze     | Freeze game, mean set game speed to 0x                                        |
 | F6  | Reset      | Reset game speed to 1x/normal                                                 | 
 | F7  | Decrease   | Decrease game speed (2-0.5 etc), depends on your `speed` config               | 
