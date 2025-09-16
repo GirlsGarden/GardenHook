@@ -69,6 +69,14 @@ public class PluginBehavior : MonoBehaviour
             Notification.Popup("Game Speed", text);
         }
 
+        if (Keyboard.current.f4Key.wasPressedThisFrame)
+        {
+            GardenConfig.AutoSkip = !GardenConfig.AutoSkip;
+            Plugin.Global.Log.LogInfo("Auto Skip: " + (GardenConfig.AutoSkip ? "Enabled" : "Disabled"));
+
+            Notification.Popup("Auto Skip", (GardenConfig.AutoSkip ? "Enabled" : "Disabled"));
+        }
+
         if (Keyboard.current.f12Key.wasPressedThisFrame)
         {
             StartCoroutine(ScreenshotFrame().WrapToIl2Cpp());

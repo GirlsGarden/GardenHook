@@ -13,9 +13,13 @@ public class Patch
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(HudOverseer), "SetSkipAvaiability")]
-    public static void SetSkipAvaiability(ref bool available)
+    public static void SetSkipAvaiability(ref HudOverseer __instance, ref bool available)
     {
         available = true;
+        if (GardenConfig.AutoSkip)
+        {
+            __instance.ProcessSkipButtonClick();
+        }
     }
 
     [HarmonyPostfix]
