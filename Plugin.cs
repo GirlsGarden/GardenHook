@@ -11,7 +11,11 @@ namespace GardenHook
     {
         public override void Load()
         {
-            Console.OutputEncoding = Encoding.UTF8;
+            if (Console.LargestWindowWidth > 0)
+            {
+                Console.OutputEncoding = Encoding.UTF8;
+            }
+
             Global.Log = Log;
 
             Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
