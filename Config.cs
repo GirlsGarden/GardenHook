@@ -42,14 +42,14 @@ public class GardenConfig
 
             if (needWrite) WriteJsonFile(Speed, AutoSkip);
 
-            Plugin.Global.Log.LogMessage("Current setting:");
-            Plugin.Global.Log.LogMessage("Game speed(each step): " + Speed);
-            Plugin.Global.Log.LogMessage("Auto Skip: " + AutoSkip);
+            Plugin.Global.Log.Msg("Current setting:");
+            Plugin.Global.Log.Msg("Game speed(each step): " + Speed);
+            Plugin.Global.Log.Msg("Auto Skip: " + AutoSkip);
         }
         else
         {
-            Plugin.Global.Log.LogWarning("config.json not found!!!");
-            Plugin.Global.Log.LogWarning("Using default config.");
+            Plugin.Global.Log.Warning("config.json not found!!!");
+            Plugin.Global.Log.Warning("Using default config.");
             Speed = 0.5;
             AutoSkip = false;
 

@@ -1,33 +1,43 @@
-﻿using BepInEx;
-using BepInEx.Unity.IL2CPP;
-using System.Text;
+﻿using System.Text;
 using System;
-using BepInEx.Logging;
+using MelonLoader;
+using Il2CppInterop.Runtime.Injection;
+using UnityEngine;
+
+[assembly: MelonInfo(typeof(GardenHook.Plugin), "GardenHook-melon", "1.0.3", "GardenHook")]
 
 namespace GardenHook
 {
-    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-    public class Plugin : BasePlugin
+    public class Plugin : MelonMod
     {
-        public override void Load()
+        public override void OnInitializeMelon()
         {
             if (Console.LargestWindowWidth > 0)
             {
                 Console.OutputEncoding = Encoding.UTF8;
             }
 
-            Global.Log = Log;
+            var log = LoggerInstance;
+            Global.Log = log;
 
-            Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
+            log.Msg($"Plugin GardenHook is loaded!");
 
             GardenConfig.Read();
             Patch.Initialize();
-            AddComponent<PluginBehavior>();
+
+            ClassInjector.RegisterTypeInIl2Cpp<PluginBehavior>();
+            GameObject melonModObject = new GameObject
+            {
+                hideFlags = HideFlags.HideAndDontSave,
+                name = "keybinding"
+            };
+            melonModObject.AddComponent<PluginBehavior>();
+            UnityEngine.Object.DontDestroyOnLoad(melonModObject);
         }
 
         public class Global
         {
-            public static ManualLogSource Log { get; set; }
+            public static MelonLogger.Instance Log { get; set; }
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using Assets.Battle.Overseers;
-using Assets.CustomRendererFeatures;
-using HarmonyLib;
+﻿using HarmonyLib;
+using Il2CppAssets.Battle.Overseers;
+using Il2CppAssets.CustomRendererFeatures;
 
 namespace GardenHook;
 
@@ -8,7 +8,7 @@ public class Patch
 {
     public static void Initialize()
     {
-        Harmony.CreateAndPatchAll(typeof(Patch));
+        HarmonyLib.Harmony.CreateAndPatchAll(typeof(Patch));
     }
 
     [HarmonyPrefix]

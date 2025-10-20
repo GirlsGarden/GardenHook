@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-using BepInEx.Unity.IL2CPP.Utils.Collections;
 using Il2CppInterop.Runtime.Attributes;
+using MelonLoader;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Object = UnityEngine.Object;
@@ -26,7 +26,7 @@ public class PluginBehavior : MonoBehaviour
             LastGSExecuteTime = Time.deltaTime;
             var currSpeed = Time.timeScale.ToString();
             var text = "Game speed increased. Current: " + currSpeed + "x";
-            Plugin.Global.Log.LogInfo(text);
+            Plugin.Global.Log.Msg(text);
 
             Notification.Popup("Game Speed", text);
         }
@@ -39,7 +39,7 @@ public class PluginBehavior : MonoBehaviour
             LastGSExecuteTime = Time.deltaTime;
             var currSpeed = Time.timeScale.ToString();
             var text = "Game speed decreased. Current: " + currSpeed + "x";
-            Plugin.Global.Log.LogInfo(text);
+            Plugin.Global.Log.Msg(text);
 
             Notification.Popup("Game Speed", text);
         }
@@ -51,7 +51,7 @@ public class PluginBehavior : MonoBehaviour
             IsGameSpeedChanged = (int)Time.timeScale != 1;
             var currSpeed = Time.timeScale.ToString();
             var text = "Game speed restored. Current: " + currSpeed + "x";
-            Plugin.Global.Log.LogInfo(text);
+            Plugin.Global.Log.Msg(text);
 
             Notification.Popup("Game Speed", text);
         }
@@ -64,7 +64,7 @@ public class PluginBehavior : MonoBehaviour
             LastGSExecuteTime = Time.deltaTime;
             var currSpeed = Time.timeScale.ToString();
             var text = "Game speed freezed. Current: " + currSpeed + "x";
-            Plugin.Global.Log.LogInfo(text);
+            Plugin.Global.Log.Msg(text);
 
             Notification.Popup("Game Speed", text);
         }
@@ -72,20 +72,20 @@ public class PluginBehavior : MonoBehaviour
         if (Keyboard.current.f4Key.wasPressedThisFrame)
         {
             GardenConfig.AutoSkip = !GardenConfig.AutoSkip;
-            Plugin.Global.Log.LogInfo("Auto Skip: " + (GardenConfig.AutoSkip ? "Enabled" : "Disabled"));
+            Plugin.Global.Log.Msg("Auto Skip: " + (GardenConfig.AutoSkip ? "Enabled" : "Disabled"));
 
             Notification.Popup("Auto Skip", (GardenConfig.AutoSkip ? "Enabled" : "Disabled"));
         }
 
         if (Keyboard.current.f12Key.wasPressedThisFrame)
         {
-            StartCoroutine(ScreenshotFrame().WrapToIl2Cpp());
+            MelonCoroutines.Start(ScreenshotFrame());
         }
 
         if (Keyboard.current.f1Key.wasPressedThisFrame)
         {
             GardenConfig.Read();
-            Plugin.Global.Log.LogInfo("[Config] reloaded.");
+            Plugin.Global.Log.Msg("[Config] reloaded.");
         }
 
         LastGSExecuteTime += Time.deltaTime;
@@ -93,7 +93,7 @@ public class PluginBehavior : MonoBehaviour
         {
             LastGSExecuteTime = 0.0f;
             Time.timeScale = CurrentGameSpeed;
-            Plugin.Global.Log.LogInfo("Game speed changed. Reset to: " + CurrentGameSpeed + "x");
+            Plugin.Global.Log.Msg("Game speed changed. Reset to: " + CurrentGameSpeed + "x");
         }
     }
 
