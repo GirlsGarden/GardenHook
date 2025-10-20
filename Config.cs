@@ -12,9 +12,9 @@ public class GardenConfig
 
     public static void Read()
     {
-        if (File.Exists("./BepInEx/plugins/config.json"))
+        if (File.Exists($"{MelonLoader.Utils.MelonEnvironment.ModsDirectory}/config.json"))
         {
-            var content = File.ReadAllText("./BepInEx/plugins/config.json", Encoding.UTF8);
+            var content = File.ReadAllText($"{MelonLoader.Utils.MelonEnvironment.ModsDirectory}/config.json", Encoding.UTF8);
             var doc = JsonDocument.Parse(content);
             var config = doc.RootElement;
 
@@ -67,7 +67,7 @@ public class GardenConfig
         };
 
         var json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText("./BepInEx/plugins/config.json", json);
+        File.WriteAllText($"{MelonLoader.Utils.MelonEnvironment.ModsDirectory}/config.json", json);
     }
 
     public class config
