@@ -20,6 +20,9 @@ KM\$, fuck you.gif
 2. Remove the dynamic mosaic
 3. In-game Screenshot
 4. Auto skip battle
+5. Enable answered selection
+**(Please note: you can't get another scenario CG from it, it's just for watch another scenario.)**
+   ![selection](./screenshot/selection.jpg)
 
 ## Requirement
 
