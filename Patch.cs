@@ -32,8 +32,8 @@ public class Patch
     }
 
     [HarmonyPrefix]
-    [HarmonyPatch(typeof(ScenarioController.__c__DisplayClass124_0), nameof(ScenarioController.__c__DisplayClass124_0._GenerateChoice_b__1))]
-    public static void GenerateChoice_b__1(ref SceneBranchSelectionMaster selectionMaster, ref ScenarioController.__c__DisplayClass124_0 __instance)
+    [HarmonyPatch(typeof(ScenarioController.__c__DisplayClass125_0), nameof(ScenarioController.__c__DisplayClass125_0._GenerateChoice_b__1))]
+    public static void GenerateChoice_b__1(ref SceneBranchSelectionMaster selectionMaster, ref ScenarioController.__c__DisplayClass125_0 __instance)
     {
         __instance.disableAnswer = false;
     }
