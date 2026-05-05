@@ -4,7 +4,7 @@ using MelonLoader;
 using Il2CppInterop.Runtime.Injection;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(GardenHook.Plugin), "GardenHook-melon", "1.0.3", "GardenHook")]
+[assembly: MelonInfo(typeof(GardenHook.Plugin), "GardenHook-melon", "1.0.5", "GardenHook")]
 
 namespace GardenHook
 {
