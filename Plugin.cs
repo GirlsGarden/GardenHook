@@ -1,8 +1,6 @@
 ﻿using System.Text;
 using System;
 using MelonLoader;
-using Il2CppInterop.Runtime.Injection;
-using UnityEngine;
 
 [assembly: MelonInfo(typeof(GardenHook.Plugin), "GardenHook-melon", "1.0.5", "GardenHook")]
 
@@ -22,17 +20,17 @@ namespace GardenHook
 
             log.Msg($"Plugin GardenHook is loaded!");
 
-            GardenConfig.Read();
+            //GardenConfig.Read();
             Patch.Initialize();
 
-            ClassInjector.RegisterTypeInIl2Cpp<PluginBehavior>();
-            GameObject melonModObject = new GameObject
-            {
-                hideFlags = HideFlags.HideAndDontSave,
-                name = "keybinding"
-            };
-            melonModObject.AddComponent<PluginBehavior>();
-            UnityEngine.Object.DontDestroyOnLoad(melonModObject);
+            //ClassInjector.RegisterTypeInIl2Cpp<PluginBehavior>();
+            //GameObject melonModObject = new GameObject
+            //{
+            //    hideFlags = HideFlags.HideAndDontSave,
+            //    name = "keybinding"
+            //};
+            //melonModObject.AddComponent<PluginBehavior>();
+            //UnityEngine.Object.DontDestroyOnLoad(melonModObject);
         }
 
         public class Global
