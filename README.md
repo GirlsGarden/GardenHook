@@ -20,9 +20,11 @@ KM\$, fuck you.gif
 2. Remove the dynamic mosaic
 3. In-game Screenshot
 4. Auto skip battle
-5. Enable answered selection
-**(Please note: you can't get another scenario CG from it, it's just for watch another scenario.)**
+5. Enable answered selection **(Please note: you can't get another scenario CG from it, it's just for watch another
+   scenario.)**
    ![selection](./screenshot/selection.jpg)
+6. [Steam] Extra Content/Character Standing/Cockpit View restoration
+7. [DMM] Reverse to Steam censored version (See Config section)
 
 ## Requirement
 
@@ -37,12 +39,13 @@ location `C:\Users\<username>\muv_luv_girlsgardenx_cl`
 
 ## Config
 
-You can edit config.json(`./BepInEx/plugins/config.json`) if you don't like default settings.
+You can edit config.json(`./Mods/config.json`) if you don't like default settings.
 
-| Name      | Default Value | Description                                        |
-|-----------|---------------|----------------------------------------------------|
-| speed     | 0.5           | Increase/Decrease game speed each step (per click) | 
-| auto_skip | false         | Auto skip battle                                   |
+| Name      | Default Value | Description                                                                                |
+|-----------|---------------|--------------------------------------------------------------------------------------------|
+| speed     | 0.5           | Increase/Decrease game speed each step (per click)                                         | 
+| auto_skip | false         | Auto skip battle                                                                           |
+| kill_neko | true          | Extra Content/Character Standing/Cockpit View restoration. If false, it will reverse to Steam censored version. ||
 
 ## Key binding
 
