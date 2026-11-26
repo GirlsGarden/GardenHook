@@ -9,6 +9,7 @@ public class GardenConfig
 {
     public static double Speed;
     public static bool AutoSkip;
+    public static bool KillNeko = true;
 
     public static void Read()
     {
@@ -40,11 +41,22 @@ public class GardenConfig
                 needWrite = true;
             }
 
-            if (needWrite) WriteJsonFile(Speed, AutoSkip);
+            if (config.TryGetProperty("kill_neko", out var nekoValue))
+            {
+                KillNeko = nekoValue.GetBoolean();
+            }
+            else
+            {
+                KillNeko = true;
+                needWrite = true;
+            }
+
+            if (needWrite) WriteJsonFile(Speed, AutoSkip, KillNeko);
 
             Plugin.Global.Log.Msg("Current setting:");
             Plugin.Global.Log.Msg("Game speed(each step): " + Speed);
             Plugin.Global.Log.Msg("Auto Skip: " + AutoSkip);
+            Plugin.Global.Log.Msg("Kill Neko: " + KillNeko);
         }
         else
         {
@@ -54,16 +66,17 @@ public class GardenConfig
             AutoSkip = false;
 
             // Create default JSON file
-            WriteJsonFile(0.5, false);
+            WriteJsonFile(0.5, false, true);
         }
     }
 
-    public static void WriteJsonFile(double speed, bool auto_skip)
+    public static void WriteJsonFile(double speed, bool auto_skip, bool kill_neko)
     {
         var config = new config
         {
             speed = speed,
             auto_skip = auto_skip,
+            kill_neko = kill_neko
         };
 
         var json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
@@ -76,5 +89,7 @@ public class GardenConfig
         public double speed { get; set; }
         [JsonPropertyName("auto_skip")]
         public bool auto_skip { get; set; }
+        [JsonPropertyName("kill_neko")]
+        public bool kill_neko { get; set; }
     }
 }
